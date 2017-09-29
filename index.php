@@ -2,6 +2,7 @@
 // Application HSE
 // Auteur : DELAUNAY Pierre
 // Dernière mise à jour : 27/06/2017 par Pierre
+// Copié sur GitHub le 29/9/2017
 
 // ouverture d'une session
 session_start();  
