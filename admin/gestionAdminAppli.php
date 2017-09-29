@@ -60,6 +60,7 @@ if ($_SESSION['type'] != 'administration') { header('Location: ../index.php'); }
         <a href="listeClasse.php" class="bouton-menu">Ajouter/Modifier/Supprimer une classe</a>
         <a href="listeActivite.php" class="bouton-menu">Ajouter/Modifier/Supprimer un type d'activité</a>
         <a href="modifAnneeScolaire.php" class="bouton-menu">Modifier l'année scolaire</a>
+        <a href="listeUtilisateur.php" class="bouton-menu">Liste des utilisateurs</a>
         <a href="ajoutEnseignant.php" class="bouton-menu">Ajouter des enseignants</a>
         </div>
 
