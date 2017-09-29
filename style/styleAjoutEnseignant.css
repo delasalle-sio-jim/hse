@@ -1,0 +1,653 @@
+html
+{ height: 100%;}
+
+*
+{ margin: 0;
+  padding: 0;}
+
+body
+{ font: normal .80em 'trebuchet ms', arial, sans-serif;
+  background: #FFFFFF;
+  /* background: #F0EFE2; */
+  color: #777;}
+
+p
+{ padding: 0 0 20px 0;
+  line-height: 1.7em;}
+
+p.small { padding: 0 0 20px 0;
+  font-size: 1em;}
+
+img
+{ border: 0;}
+
+h1, h2, h3, h4, h5, h6 
+{ font: normal 175% 'century gothic', arial, sans-serif;
+  color: #43423F;
+  margin: 0 0 15px 0;
+  padding: 15px 0 5px 0;}
+
+h2
+{ font: normal 175% 'century gothic', arial, sans-serif;
+  color: #A4AA04;}
+
+h2.align {
+  text-align: center;
+}
+
+h3
+{ font: normal 155% 'century gothic', arial, sans-serif;}
+
+h4, h5, h6
+{ margin: 0;
+  padding: 0 0 5px 0;
+  font: normal 120% arial, sans-serif;
+  color: #A4AA04;}
+
+h5, h6
+{ font: italic 95% arial, sans-serif;
+  color: #000;}
+
+h6
+{ color: #362C20;}
+
+a, a:hover
+{ outline: none;
+  text-decoration: underline;
+  color: #14CECC;}
+
+a:hover
+{ text-decoration: none;}
+
+blockquote
+{ margin: 20px 0; 
+  padding: 10px 20px 0 20px;
+  border: 1px solid #E5E5DB;
+  background: #FFF;}
+
+ul
+{ margin: 2px 0 22px 17px;}
+
+ul li
+{ list-style-type: circle;
+  margin: 0 0 6px 0; 
+  padding: 0 0 4px 5px;} 
+
+ol
+{ margin: 8px 0 22px 20px;}
+
+ol li
+{ margin: 0 0 11px 0;}
+
+.left
+{ float: left;
+  width: auto;
+  margin-right: 10px;}
+
+.right
+{ float: right; 
+  width: auto;
+  margin-left: 10px;}
+
+.center
+{ display: block;
+  text-align: center;
+  margin: 20px auto;}
+
+#main, #logo, #menubar, #site_content, #footer
+{ margin-left: auto; 
+  margin-right: auto;
+}
+
+#header
+{ background: #FFFFFF;
+  border-bottom: 1px solid #FFF;
+  height: 250px;}
+
+#logo
+{ width: 829px;
+  position: relative;
+  height: 135px; /* 178 de base */
+  background: url(logo_dls.png) no-repeat;} 
+
+/*#logo
+{ width: 829px;
+  position: relative;
+  height: 178px;
+  background: url(logo.png) no-repeat;} */
+
+#logo #logo_text 
+{ position: absolute; 
+  top: 5px;
+  left: 500;} /* 0 de base */
+
+#logo h1, #logo h2
+{ font: normal 300% 'century gothic', arial, sans-serif;
+  border-bottom: 0;
+  text-transform: none;
+  margin: 0;}
+
+#logo_text h1, #logo_text h1 a, #logo_text h1 a:hover 
+{ padding: 22px 0 0 0;
+  color: #777;
+  letter-spacing: 0.1em;
+  text-decoration: none;}
+
+#logo_text h1 a .logo_colour
+{ color: #999;}
+
+#logo_text h2
+{ font-size: 100%;
+  padding: 4px 0 0 0;
+  color: #CDC090;}
+
+#logo #contact_details
+{ position: absolute; 
+  top: 60px;
+  right: 65px;}
+
+#logo #contact_details p
+{ text-align: center;
+  padding: 0;
+  line-height: 22px;
+  font-size: 110%;
+  color: #999;}
+
+#menubar
+{ width: 875px;
+  height: 71px;
+  padding: 0px 0 0 0px;
+  border: 1px solid #6A6A6A;
+  border-bottom: 0;
+  background: #555 url(menu.png) repeat-x;} 
+
+ul#menu
+{ float: left;
+  margin: 0; 
+  padding: 0;}
+
+ul#menu li
+{ float: left;
+  margin: 0px 0 0 0;
+  padding: 0px 0 0 0px;
+  list-style: none;}
+
+ul#menu li a
+{ letter-spacing: 0.1em;
+  font: normal 100% 'trebuchet ms', arial;
+  display: block; 
+  float: left; 
+  height: 38px;
+  padding: 28px 22px 4px 22px;
+  text-align: center;
+  color: #CDC090;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-right: 1px solid #6A6A6A;
+  background: transparent;}
+
+ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
+{ color: #FFF;}
+
+#site_content
+{ width: 845px;
+  overflow: hidden;
+  margin: 0 auto 0 auto;
+  padding: 0px 20px 20px 33px;
+  background: #FFF url(content.png) repeat-y;} 
+
+.sidebar
+{ float: right;
+  width: 190px;
+  padding: 0 15px 20px 15px;}
+
+.sidebar ul
+{ width: 178px; 
+  padding: 4px 0 0 0; 
+  margin: 4px 0 30px 0;}
+
+.sidebar li
+{ list-style: none; 
+  padding: 0 0 7px 0; }
+
+.sidebar li a, .sidebar li a:hover
+{ padding: 0 0 0 35px;
+  display: block;
+  background: transparent url(link.png) no-repeat left center;} 
+
+.sidebar li a.selected
+{ color: #444;} 
+
+#content
+{ text-align: left; /* left */
+  width: 590px; /* 590 de base */
+  padding: 0;}
+
+#content ul
+{ margin: 2px 0 22px 0px;}
+
+#content ul li
+{ list-style-type: none;
+  background: url(bullet.png) no-repeat;
+  margin: 0 0 6px 0; 
+  padding: 0 0 4px 25px;
+  line-height: 1.5em;}
+
+#footer
+{ width: 878px;
+  font: normal 100% "lucida sans unicode";
+  height: 33px;
+  padding: 24px 0 5px 0;
+  text-align: center; 
+  background: #555 url(menu.png) repeat-x;
+  color: #CDC090;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;}
+
+#footer a
+{ color: #FFF;
+  text-decoration: none;}
+
+#footer a:hover
+{ color: #CDC090;
+  text-decoration: none;}
+
+.search
+{ color: #5D5D5D; 
+  border: 1px solid #BBB; 
+  width: 134px; 
+  padding: 4px; 
+  font: 100% arial, sans-serif;}
+
+
+/* ----------------- Mise en forme des formulaires -------------------- */
+
+
+
+
+.form_settings
+{ margin: 15px 0 0 0;}
+
+.form_settings p
+{ padding: 0 0 4px 0;}
+
+.form_settings span
+{ float: left; 
+  width: 200px; 
+  text-align: left;}
+  
+.form_settings input, .form_settings textarea
+{ padding: 5px; 
+  width: 299px; 
+  font: 100% arial; 
+  border: 1px solid #E5E5DB; 
+  background: #FFF; 
+  color: #47433F;}
+  
+.form_settings .submit
+{ font: 100% arial; 
+  border: 1px solid; 
+  width: 99px; 
+  margin: 0 0 0 212px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #3B3B3B; 
+  color: #FFF;}
+
+.form_settings textarea, .form_settings select
+{ font: 100% arial; 
+  width: 299px;}
+
+.form_settings select
+{ width: 310px;}
+
+.form_settings .checkbox
+{ margin: 4px 0; 
+  padding: 0; 
+  width: 14px;
+  border: 0;
+  background: none;}
+
+.separator
+{ width: 100%;
+  height: 0;
+  border-top: 1px solid #D9D5CF;
+  border-bottom: 1px solid #FFF;
+  margin: 0 0 20px 0;}
+  
+table
+{ margin: 10px 0 30px 0;}
+
+table tr th, table tr td
+{ background: #3B3B3B;
+  color: #FFF;
+  padding: 7px 4px;
+  text-align: left;}
+  
+table tr td
+{ background: #F4F4EE;
+  color: #47433F;
+  border-top: 1px solid #FFF;}
+
+
+
+input[type=submit] {
+  font-weight: bold;
+  border: solid 1px grey;
+  width: 150px;
+  height: 25px;
+  margin-left: 50px;
+  margin-top: 0px;
+  
+  /* coins arrondis */
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+  
+  /* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+  background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+  background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+
+input[type=reset] {
+  font-weight: bold;
+  border: solid 1px grey;
+  width: 150px;
+  height: 25px;
+  margin-left: 50px;
+  margin-top: 0px;
+  
+  /* coins arrondis */
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+  
+  /* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+  background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+  background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+
+/* affichage d'un message pour l'utilisateur  */
+ .msg p{
+  color: red;
+  text-align:center;
+ }
+ 
+  .msgOK p{
+  color: blue;
+  text-align:center;
+ }
+
+ /* ----------------- Mise en forme du menu vertical -------------------- */
+
+/* style de la <div id="menu-vertical"> */
+div#menu-vertical {
+  /* padding en haut et en bas */
+  padding: 20px 0 20px 0;
+  width: 450px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+/* style des titres <h3> de la <div id="menu-vertical"> */
+div#menu-vertical h3 {
+  margin: 0;
+  padding: 5px;
+  
+  /* taille et couleur de la police */
+  font: normal .80em 'trebuchet ms', arial, sans-serif;
+  font-weight: bold;
+  color: #777;
+}
+
+/* style des balises <a> contenues dans les titres <h3> de la <div id="menu-vertical"> */
+div#menu-vertical h3 a {
+  text-decoration: none;
+  color: grey;
+}
+
+/* style des divisions de classe "menu" */
+div#menu-vertical .menu {
+  /* border-bottom: 1px solid #333; */
+}
+
+/* style des <div> qui suivent immédiatement un <h3> */
+div#menu-vertical h3 + div {
+  /* hauteur nulle pour fermer la boîte */
+  height: 0;
+  /* masquage du débordement */
+  overflow: hidden;
+}
+
+/* style des <div> qui suivent immédiatement un <h3> ciblées (target) par les liens hypertextes */
+div#menu-vertical :target h3 + div {
+  /* hauteur de la boîte */
+  height: auto;
+} 
+
+/* transformation en boutons des liens hypertextes <a> avec l'attribut class="bouton-menu" */
+div#menu-vertical a.bouton-menu {
+  /* police, couleur et alignement du texte, style du lien */
+  font: normal 1.1em 'trebuchet ms', arial, sans-serif;
+  color: #777;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+
+  /* ombre portée du texte du bouton */
+  text-shadow: 0 1px 0 #fff;
+    
+  /* dimensions, margin, padding, type d'affichage, bordure */
+  width: 350px;
+  margin: 10px auto;
+  padding: 5px;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  
+  /* coins arrondis */
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+  
+  /* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+  background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(220, 220, 220));
+  background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(220, 220, 220)));
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(220, 220, 220));
+  
+  /* ombre portée du bouton */
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* modification au survol des liens hypertextes <a> avec l'attribut class="bouton-menu" */
+div#menu-vertical a.bouton-menu:hover {
+  /* fond avec un dégradé de couleur (blanc en haut, gris plus soutenu en bas) */
+  background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(200, 200, 200));
+  background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(200, 200, 200)));
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(200, 200, 200));
+}
+
+
+/* ------------------------ styles liés au système d'affichage de messages ---------------------------- */
+
+/* mise en forme de la boite d'affichage du message */
+.classe_message > div {
+  width: 500px;
+  background: #fff;
+  position: relative;
+  margin: 10% auto;
+  padding: 30px;
+  text-shadow: 0 1px 0 #fff;
+
+  /* coins arrondis */
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+  
+  /* ombre portée */
+  -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+  -o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+
+  /* fond avec un dégradé de couleur (blanc en haut, gris en bas) */  
+  background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+  background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+/* style du titre du message d'avertissement et son icone */
+#affichage_message h2.classe_avertissement {
+  padding-left: 50px;
+  line-height: 32px;
+  background: url(./images/avertissement.png) no-repeat left bottom;
+  color: #0b4c8e;
+}
+
+/* style du titre du message d'information et son icone */
+#affichage_message h2.classe_information {
+  padding-left: 50px;
+  line-height: 32px;
+  background: url(./images/information.png) no-repeat left bottom;
+  color: #0b4c8e;
+}
+
+/* style du message */
+#affichage_message p.classe_texte_message {
+  padding-left: 50px;
+  font-size: 1.2em;
+}
+
+/* style du lien de fermeture */
+.classe_message a {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #000;
+}
+
+/* le conteneur qui va recouvrir la page */
+.classe_message {
+  /* on occupe tout l'espace */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* un fond noir avec une transparence de 30% */
+  background: rgba(0, 0, 0, 0.3);
+  /* le conteneur est placé sur la page */
+  z-index: 10000;
+  
+  /* utilisation de la transformation de transparence à l'ouverture */
+  -webkit-transition: opacity 500ms ease-in;
+  -moz-transition: opacity 500ms ease-in;
+  -o-transition: opacity 500ms ease-in;
+  transition: opacity 500ms ease-in;
+  
+  /* au chargement de la page, le conteneur est transparent */
+  opacity: 0;
+  /* et on ne peut pas cliquer sur ses éléments */
+  pointer-events: none;
+}
+
+/* quand le conteneur est ciblé, il devient opaque */
+.classe_message:target {
+  opacity: 1;
+  /* et on peut maintenant cliquer sur ses éléments */
+  pointer-events: auto;
+}
+
+/* animation à l'ouverture de la boîte de message */
+@-webkit-keyframes animation_ouverture {
+  0% { -webkit-transform: scale3d(0.1, 0.1, 1); -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+  55% { -webkit-transform: scale3d(1.08, 1.08, 1); -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+  75% { -webkit-transform: scale3d(0.95, 0.95, 1); -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+  100% { -webkit-transform: scale3d(1, 1, 1); -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }  
+}
+@-moz-keyframes animation_ouverture {
+  0% { -moz-transform: scale3d(0.1, 0.1, 1); -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+  55% { -moz-transform: scale3d(1.08, 1.08, 1); -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+  75% { -moz-transform: scale3d(0.95, 0.95, 1); -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+  100% { -moz-transform: scale3d(1, 1, 1); -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }  
+}
+@-o-keyframes animation_ouverture {
+  0% { -o-transform: scale3d(0.1, 0.1, 1); -o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+  55% { -o-transform: scale3d(1.08, 1.08, 1); -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+  75% { -o-transform: scale3d(0.95, 0.95, 1); -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+  100% { -o-transform: scale3d(1, 1, 1); -o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }  
+}
+@keyframes animation_ouverture {
+  0% { transform: scale3d(0.1, 0.1, 1); box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+  55% { transform: scale3d(1.08, 1.08, 1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+  75% { transform: scale3d(0.95, 0.95, 1); box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+  100% { transform: scale3d(1, 1, 1); box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }  
+}
+
+/* declenchement de l'animation d'ouverture */
+.classe_message:target > div {
+  -webkit-animation: animation_ouverture 1000ms linear;
+  -moz-animation: animation_ouverture 1000ms linear;
+  -o-animation: animation_ouverture 1000ms linear;
+  animation: animation_ouverture 1000ms linear;
+}
+
+/* animation à la fermeture de la boîte de message */
+@-webkit-keyframes animation_fermeture {
+  0% { -webkit-transform: scale3d(1, 1, 1); }
+  100% { -webkit-transform: scale3d(0.1, 0.1, 1); }
+}
+@-moz-keyframes animation_fermeture {
+  0% { -moz-transform: scale3d(1, 1, 1); }
+  100% { -moz-transform: scale3d(0.1, 0.1, 1); }
+}
+@-o-keyframes animation_fermeture {
+  0% { -o-transform: scale3d(1, 1, 1); }
+  100% { -o-transform: scale3d(0.1, 0.1, 1); }
+}
+@keyframes animation_fermeture {
+  0% { transform: scale3d(1, 1, 1); }
+  100% { transform: scale3d(0.1, 0.1, 1); }
+}
+
+/* déclenchement de l'animation de fermeture */
+.classe_message > div {
+  -webkit-animation: animation_fermeture 500ms linear;
+  -moz-animation: animation_fermeture 500ms linear;
+  -o-animation: animation_fermeture 500ms linear;
+  animation: animation_fermeture 500ms linear;
+}
+
+
+
+
+
+
+
+.upload .browse input[type='file']{
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 3px;
+    height: 1px;
+    width: 1px;
+    z-index: -5;
+}
