@@ -112,13 +112,18 @@ table {
       </td>
       </tr>
 
+      <tr>
+      <td width="10%">
+      Nom de l'enveloppe : <input type='text' name="enveloppe" size="60" placeholder="Un nom d'enveloppe">
+      </td>
+      </tr>
 
       </table>
       </fieldset>
 
       <br/><br/>
 
-      <p> (*) Champ obligatoire</p>
+      <p> (*) Champs obligatoires</p>
       <p> Remarque : Le libellé de l'activité apparaîtra dans la liste déroulante ! </p>
 
       <input type="submit" name="btnConnecter" id="btnConnecter" value="Valider">
@@ -135,13 +140,14 @@ table {
 
       /* On va chercher le libellé existant coresspondant à l'id à l'aide d'une requête */
 
-      $req_pre = $cnx->prepare("SELECT typeactivite_id AS typeID, typeactivite_libelle AS typeLibelle FROM hse_typeactivite WHERE typeactivite_id = :typeID;");
+      $req_pre = $cnx->prepare("SELECT typeactivite_id AS typeID, typeactivite_libelle AS typeLibelle, typeactivite_enveloppe AS activiteEnv FROM hse_typeactivite WHERE typeactivite_id = :typeID;");
       $req_pre->bindValue(':typeID', $typeactiviteID, PDO::PARAM_STR);
       $req_pre->execute();
       
       $resultat=$req_pre->fetch(PDO::FETCH_OBJ);
 
       $libelle = utf8_encode($resultat->typeLibelle);
+      $enveloppe = utf8_encode($resultat->activiteEnv);
 
       /* Après avoir tout récupérer, on affiche le formulaire de modification ! */
       ?>
@@ -163,6 +169,12 @@ table {
       </td>
       </tr>
 
+      <tr>
+      <td width="10%">
+      Nom de l'enveloppe * : <input type='text' name="enveloppe" size="60" value='<?php echo $enveloppe; ?>' >
+      </td>
+      </tr>
+      
       <input type="hidden" name="typeactiviteID" value=<?php echo $typeactiviteID;?> >
 
       </table>

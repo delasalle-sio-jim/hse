@@ -1,14 +1,14 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 05/09/2017 par Pierre
+// Dernière mise à jour : 04/10/2017 par Pierre
 
 // ouverture d'une session
 session_start();  
 // inclusion des paramètres et de la bibliothéque de fonctions ("include_once" peut être remplacé par "require_once")
-include_once ('../../../include/_inc_parametres.php');
+include_once ('../include/_inc_parametres.php');
 // connexion du serveur web à la base MySQL ("include_once" peut être remplacé par "require_once")
-include_once ('../../include/_inc_connexion.php');
+include_once ('../include/_inc_connexion.php');
 // fonctions
 include ('../include/fonctions.php');
 
@@ -24,8 +24,7 @@ $handle = fopen('php://output', 'w');
 fputs($handle, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
 
 //On insère les titres
-fputcsv($handle, array('Enveloppe', 'Prénom', 'Nom', 'NbHeures', 'Mois', 'Activité', 'Date de l\'activité', 'Classe', 'Commentaire'), ';');
-     
+fputcsv($handle, array('Enveloppe', 'Prénom', 'Nom', 'DuréeBaseDécimale', 'Mois', 'Activité', 'Date de l\'activité', 'Classe', 'Commentaire'), ';');
 $reponse->setFetchMode(PDO::FETCH_ASSOC);
 while($donnees = $reponse->fetch()) {
 	$donnees = array_map("utf8_encode", $donnees);

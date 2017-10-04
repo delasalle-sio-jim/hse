@@ -103,7 +103,7 @@ table {
       if ($countActivites > 0) {
       /* On a bien des activités présentes dans la bdd, on affiche le tableau */
       
-      $lesActivites = $cnx->query("SELECT typeactivite_id AS typeActiviteID, typeactivite_libelle AS activiteLibelle FROM hse_typeactivite;");
+      $lesActivites = $cnx->query("SELECT typeactivite_id AS typeActiviteID, typeactivite_libelle AS activiteLibelle, typeactivite_enveloppe AS activiteEnv FROM hse_typeactivite;");
       $lesActivites->setFetchMode(PDO::FETCH_OBJ);
       $uneActivite = $lesActivites->fetch();
 
@@ -113,6 +113,7 @@ table {
       echo "<thead>
               <tr>
                 <td>Libellé de l'activité</td>
+                <td>Enveloppe</td>
                 <td>Modifier</td>
                 <td>Supprimer</td>
               </tr>
@@ -123,13 +124,15 @@ table {
 
       $libelleActivite = utf8_encode($uneActivite->activiteLibelle);
       $libelleActivite = stripslashes($libelleActivite);
+      $enveloppeActivite = utf8_encode($uneActivite->activiteEnv);
       echo "<tr><td> ".$libelleActivite."</td>";
+      echo "<td>".$enveloppeActivite."</td>";
       if ($uneActivite->typeActiviteID == 1) {
       /* On bloque volontairement les modifications et suppressions du type activite : khôlles car une modification entraînerait de multiples erreurs dans l'application */
       echo "<td></td>";
       echo "<td></td>";
       }
-      else {
+      else { 
       echo "<td><a href='ajoutModifActivite.php?action=modifier&id=".$uneActivite->typeActiviteID."'><img src='../images/edit.png' height='16' width='16'></a></td>";
       echo "<td><a href='listeActivite.php?action=suppression&id=".$uneActivite->typeActiviteID."'><img src='../images/delete.png' height='16' width='16'></a></td></tr>";
       }

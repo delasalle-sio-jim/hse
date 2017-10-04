@@ -16,6 +16,11 @@ include ('../include/fonctions.php');
 
 $libelle = utf8_decode($_POST['libelle']);
 
+/* Si l'administrateur ne saisit pas d'enveloppe */
+if ($_POST['enveloppe'])
+{ $enveloppe = utf8_decode($_POST['enveloppe']); }
+else { $enveloppe = "";}
+
 // pas besoin d'utiliser la fonction addslashes pour gérer les apostrophes chez OVH
 
 /* On récupère le typeactiviteID via l'input hidden */
@@ -23,10 +28,11 @@ $libelle = utf8_decode($_POST['libelle']);
 $typeactiviteID= $_POST['typeactiviteID'];
 
 // préparation de la requête d'UPDATE dans la table hse_classes
-$txt_req = "UPDATE hse_typeactivite SET typeactivite_libelle = :libelle WHERE typeactivite_id = :typeactiviteID;";
+$txt_req = "UPDATE hse_typeactivite SET typeactivite_libelle = :libelle, typeactivite_enveloppe = :enveloppe WHERE typeactivite_id = :typeactiviteID;";
 $req = $cnx->prepare($txt_req);
 // liaison de la requête et de ses paramètres
 $req->bindValue("libelle", $libelle, PDO::PARAM_STR);
+$req->bindValue("enveloppe", $enveloppe, PDO::PARAM_STR);
 $req->bindValue("typeactiviteID", $typeactiviteID, PDO::PARAM_STR);
 // extraction des données et comptage des réponses
 $req->execute();

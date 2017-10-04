@@ -16,13 +16,19 @@ include ('../include/fonctions.php');
 
 $libelle = utf8_decode($_POST['libelle']);
 
+/* Si l'administrateur ne saisit pas d'enveloppe */
+if ($_POST['enveloppe']) 
+{ $enveloppe = utf8_decode($_POST['enveloppe']); }
+else { $enveloppe = "";}
+
 // pas besoin d'utiliser la fonction addslashes pour gérer les apostrophes chez OVH
 
 // préparation de la requête insert dans la table hse_typeactivite
-$txt_req = "INSERT INTO hse_typeactivite (typeactivite_libelle) VALUES (:libelle);";
+$txt_req = "INSERT INTO hse_typeactivite (typeactivite_libelle, typeactivite_enveloppe) VALUES (:libelle, :enveloppe);";
 $req = $cnx->prepare($txt_req);
 // liaison de la requête et de ses paramètres
 $req->bindValue("libelle", $libelle, PDO::PARAM_STR);
+$req->bindValue("enveloppe", $enveloppe, PDO::PARAM_STR);
 // extraction des données et comptage des réponses
 $req->execute();
 
