@@ -1,16 +1,17 @@
+<?php ob_start(); ?>
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 04/10/2017 par Pierre
+// Dernière mise à jour : 13/10/2017 par Pierre
 
 // ouverture d'une session
-session_start();  
+//session_start();  
 // inclusion des paramètres et de la bibliothéque de fonctions ("include_once" peut être remplacé par "require_once")
 include_once ('../include/_inc_parametres.php');
 // connexion du serveur web à la base MySQL ("include_once" peut être remplacé par "require_once")
 include_once ('../include/_inc_connexion.php');
 // fonctions
-include ('../include/fonctions.php');
+//include ('../include/fonctions.php');
 
 //--------------------------------------------------------------------------
 // Première partie : Exportation au format CSV.
@@ -56,5 +57,5 @@ $req->bindValue("dejaExporte", $dejaExporte, PDO::PARAM_STR);
 
 // extraction des données et comptage des réponses
 $req->execute();
-
+ob_flush();
 ?>
