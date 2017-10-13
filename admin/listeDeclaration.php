@@ -195,7 +195,7 @@ if ( !empty($_POST['typeDeclaration']) AND !empty($_POST['activite']) AND !empty
 
 // https://openclassrooms.com/forum/sujet/recherche-avec-plusieurs-criteres-86345
 
-$sql = "SELECT * FROM hse_vue_listedeclarations;";
+$sql = "SELECT * FROM hse_vue_listedeclarations ";
 // on récupère les critères sélectionnés
 extract($_POST);
  
@@ -239,8 +239,7 @@ foreach($choix as $c)
     }
 }
 
-$requete = $sql.$conditions.";";
-
+$requete = $sql.$conditions;
 $reqcount = "SELECT COUNT(*) As Nb FROM hse_vue_listedeclarations".$conditions;
 
 
@@ -250,9 +249,9 @@ $ligne = $resultat->fetch();
 
 $count = $ligne->Nb;
 
-	if ($count > 0 ) {
+	if ($count != 0 ) {
 
-		$lesDeclarations = $cnx->query($requete) or die ('Erreur : aucune déclaration trouvée !');
+	    $lesDeclarations = $cnx->query($requete) or die ('Erreur : aucune déclaration trouvée !');
 		$lesDeclarations->setFetchMode(PDO::FETCH_OBJ);
 		$uneDeclaration = $lesDeclarations->fetch();
 

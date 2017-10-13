@@ -1,7 +1,7 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 20/09/2017 par Pierre
+// Dernière mise à jour : 13/10/2017 par Pierre
 
 // ouverture d'une session
 session_start();  
@@ -68,9 +68,17 @@ return $pos;
       <div id="content"> <!-- début id="content" -->
         <div class="upload">
 
-          <a href="gestionAdminAppli.php"><img src='../images/back.jpg' height='36' width='36'></a> 
+          <a href="ajoutEnseignant.php"><img src='../images/back.jpg' height='36' width='36'></a> 
 
-          <h1 class="browse">Procédure d'ajout des utilisateurs </h1>
+		  <h1 class="browse">Ajout d'un enseignant seulement : </h1>
+		  
+		  <p><center><a href='ajoutEnseignantUnique.php'><input type='submit' name='btnConnecter' id='btnConnecter' value='Ajouter un enseignant'></a></center></p>
+		  
+		  <br><br><br>
+		  <hr>
+		  <br><br><br>
+		  
+          <h1 class="browse">Procédure d'ajout en début d'année : </h1>
 
           <p><strong> Déroulement de la procédure :</strong> <br/>
           L'ajout des utilisateurs s'effectue avant chaque rentrée scolaire en septembre, de préférence quand la liste des enseignants est complète.
