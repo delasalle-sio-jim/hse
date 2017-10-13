@@ -68,7 +68,7 @@ return $pos;
       <div id="content"> <!-- début id="content" -->
         <div class="upload">
 
-          <a href="ajoutEnseignant.php"><img src='../images/back.jpg' height='36' width='36'></a> 
+          <a href="gestionAdminAppli.php"><img src='../images/back.jpg' height='36' width='36'></a> 
 
 		  <h1 class="browse">Ajout d'un enseignant seulement : </h1>
 		  
