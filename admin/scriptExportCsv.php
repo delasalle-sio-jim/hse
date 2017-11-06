@@ -2,10 +2,10 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 13/10/2017 par Pierre
+// Dernière mise à jour : 06/11/2017 par Pierre
 
 // ouverture d'une session
-//session_start();  
+session_start();  
 // inclusion des paramètres et de la bibliothéque de fonctions ("include_once" peut être remplacé par "require_once")
 include_once ('../include/_inc_parametres.php');
 // connexion du serveur web à la base MySQL ("include_once" peut être remplacé par "require_once")
@@ -42,7 +42,7 @@ header('Content-Disposition: attachment;filename='.$nomFichier.'.csv');
 
 //--------------------------------------------------------------------------
 // Deuxième partie : On change le statut (dejaExporte) des déclarations
-// importées précedemment.
+// importées précedemment. On met à jour la table hse_parametres également.
 //
 //--------------------------------------------------------------------------
 
@@ -57,5 +57,18 @@ $req->bindValue("dejaExporte", $dejaExporte, PDO::PARAM_STR);
 
 // extraction des données et comptage des réponses
 $req->execute();
+
+$auteurExport = $_SESSION['login'];
+$dateTimeExport = date("Y-m-d H:i:s");
+// préparation de la requête update dans la table hse_declarations
+$txt_req = "UPDATE hse_parametres SET dateTimeExport = :dt, auteurExport = :auteur;";
+$req = $cnx->prepare($txt_req);
+
+// liaison de la requête et de ses paramètres
+$req->bindValue("dt", $dateTimeExport, PDO::PARAM_STR);
+$req->bindValue("auteur", $auteurExport, PDO::PARAM_STR);
+// extraction des données et comptage des réponses
+$req->execute();
+
 ob_flush();
 ?>

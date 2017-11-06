@@ -1,7 +1,7 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 05/09/2017 par Pierre
+// Dernière mise à jour : 06/11/2017 par Pierre
 
 // ouverture d'une session
 session_start();  
@@ -20,6 +20,16 @@ $req->execute();
 $nbCount = $req->fetchColumn(0);
 // libère les ressources du jeu de données
 $req->closeCursor();  
+
+// préparation de la requête de recherche dans la table hse_parametres
+$laReq = $cnx->query("SELECT dateTimeExport, auteurExport FROM hse_parametres");
+$laReq->setFetchMode(PDO::FETCH_OBJ);
+// extraction des données et comptage des réponses
+$data = $laReq->fetch();
+$auteurExport = ($data->auteurExport);
+$dateTimeExport = toDateTimeFR($data->dateTimeExport);
+// libère les ressources du jeu de données
+$laReq->closeCursor();  
 
 ?>
 
@@ -69,6 +79,12 @@ $req->closeCursor();
       peut encore les modifier, les enseignants verront les changements mais il est préférable de faire les changements sur Excel puisqu'on ne peut
       plus les exporter à nouveau : l'exportation fonctionne seulement pour les déclarations qui n'ont pas encore été exportées.
       </p>  
+
+      <p><strong> Dernière exportation : </strong> <br/> <br/>
+      
+      La dernière exportation a eu lieu le <?php echo $dateTimeExport; ?> par <?php echo $auteurExport."."; ?>
+
+      </p>
 
       <p><strong> Effectuer l'exportation : </strong> <br/> <br/>
       

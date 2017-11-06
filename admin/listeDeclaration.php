@@ -1,7 +1,7 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 20/09/2017 par Pierre
+// Dernière mise à jour : 06/11/2017 par Pierre
 
 // ouverture d'une session
 session_start();  
@@ -255,10 +255,50 @@ $count = $ligne->Nb;
 		$lesDeclarations->setFetchMode(PDO::FETCH_OBJ);
 		$uneDeclaration = $lesDeclarations->fetch();
 
-		// Entête du tableau
+		// Entête du tableau khôlles
 
-      	echo "<table class='tableau'> ";
-      	echo "<thead>
+		if ($activite == 1 ) {
+      		echo "<table class='tableau'> ";
+      		echo "<thead>
+              <tr>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Date de l'activité</td>
+                <td>Classe</td>
+                <td>Activité</td>
+                <td>Nombre d'étudiants</td>
+                <td>Durée par étudiant</td>
+                <td>Modifier</td>
+                <td>Supprimer</td>
+              </tr>
+            </thead>";
+      		echo "<tr></tr>";
+
+      			while ($uneDeclaration) {
+
+      				echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)."</td>";
+      				echo "<td> ".utf8_encode($uneDeclaration->ensPrenom)."</td>";
+      				echo "<td> ".toDateFrancais($uneDeclaration->decDate)."</td>";
+      				echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
+      				echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
+      				echo "<td> ".$uneDeclaration->nbetudiants."</td>";
+      				echo "<td> ".$uneDeclaration->dureeParEtudiant."</td>";
+      				echo "<td><a href='modifierDeclaration.php?id=".$uneDeclaration->decID."'><img src='../images/edit.png' height='16' width='16'></a></td>";
+      				echo "<td><a href='listeDeclaration.php?action=suppression&id=".$uneDeclaration->decID."'><img src='../images/delete.png' height='16' width='16'></a></td>";
+
+      				$uneDeclaration = $lesDeclarations->fetch();
+      			}
+
+      		$lesDeclarations->closeCursor();
+      		echo "</table>";
+
+      	}
+      	else {
+
+      		// Entête du tableau HSE
+
+      		echo "<table class='tableau'> ";
+      		echo "<thead>
               <tr>
                 <td>Nom</td>
                 <td>Prénom</td>
@@ -266,32 +306,34 @@ $count = $ligne->Nb;
                 <td>Classe</td>
                 <td>Activité</td>
                 <td>Durée</td>
+                <td>Commentaire</td>
                 <td>Modifier</td>
                 <td>Supprimer</td>
               </tr>
             </thead>";
-      	echo "<tr></tr>";
+      		echo "<tr></tr>";
 
-      		while ($uneDeclaration) {
+      			while ($uneDeclaration) {
 
-      			echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)."</td>";
-      			echo "<td> ".utf8_encode($uneDeclaration->ensPrenom)."</td>";
-      			echo "<td> ".toDateFrancais($uneDeclaration->decDate)."</td>";
-      			echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
-      			echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
-      			echo "<td> ".$uneDeclaration->duree."</td>";
-      			echo "<td><a href='modifierDeclaration.php?id=".$uneDeclaration->decID."'><img src='../images/edit.png' height='16' width='16'></a></td>";
-      			echo "<td><a href='listeDeclaration.php?action=suppression&id=".$uneDeclaration->decID."'><img src='../images/delete.png' height='16' width='16'></a></td>";
+      				echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)."</td>";
+      				echo "<td> ".utf8_encode($uneDeclaration->ensPrenom)."</td>";
+      				echo "<td> ".toDateFrancais($uneDeclaration->decDate)."</td>";
+      				echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
+      				echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
+      				echo "<td> ".$uneDeclaration->duree."</td>";
+      				if (($uneDeclaration->precisionsprof) == null) { echo "<td style='background-color : grey; opacity: 0.8;'> </td>";} else {
+      				echo "<td> ".utf8_encode($uneDeclaration->precisionsprof)."</td>";
+      				}
+      				echo "<td><a href='modifierDeclaration.php?id=".$uneDeclaration->decID."'><img src='../images/edit.png' height='16' width='16'></a></td>";
+      				echo "<td><a href='listeDeclaration.php?action=suppression&id=".$uneDeclaration->decID."'><img src='../images/delete.png' height='16' width='16'></a></td>";
 
-      			$uneDeclaration = $lesDeclarations->fetch();
-
-
-      		}
-
+      				$uneDeclaration = $lesDeclarations->fetch();
+      			}
 
       		$lesDeclarations->closeCursor();
       		echo "</table>";
 
+      	}
 	}
 	else {
 
