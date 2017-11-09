@@ -162,4 +162,13 @@ function toDateTimeFR($DateTime) {
 		return $jour.'/'.$mois.'/'.$annee.' à '.$time;
 }
 
+function toDateTimeFRtableau($DateTime) {
+    $time = substr($DateTime,11);
+    // extraction des 3 sous-chaines
+    $jour = substr($DateTime,8,2);
+    $mois = substr($DateTime,5,2);
+    $annee = substr($DateTime,0,4);
+    // renvoi de la concaténation du datetime au format français
+    return $jour.'/'.$mois.'/'.$annee.' '.$time;
+}
 ?>
