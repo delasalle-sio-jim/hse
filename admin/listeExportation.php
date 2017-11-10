@@ -14,6 +14,26 @@ include('../include/fonctions.php');
 
 // si l'utilisateur n'est pas un admin
 if ($_SESSION['type'] != 'administration') { header('Location: ../index.php'); }
+
+// préparation de la requête de recherche dans la table hse_declarations
+$txt_req = "SELECT count(*) FROM hse_declarations WHERE dejaExporte = 0";
+$req = $cnx->prepare($txt_req);
+// extraction des données et comptage des réponses
+$req->execute();
+$nbCount = $req->fetchColumn(0);
+// libère les ressources du jeu de données
+$req->closeCursor();
+
+// préparation de la requête de recherche dans la table hse_parametres
+$laReq = $cnx->query("SELECT dateTimeExport, auteurExport FROM hse_parametres");
+$laReq->setFetchMode(PDO::FETCH_OBJ);
+// extraction des données et comptage des réponses
+$data = $laReq->fetch();
+$auteurExport = ($data->auteurExport);
+$dateTimeExport = toDateTimeFR($data->dateTimeExport);
+// libère les ressources du jeu de données
+$laReq->closeCursor(); 
+
 ?>
 
 <!DOCTYPE HTML>
@@ -88,18 +108,20 @@ table {
       <a href="gestionAdminDeclaration.php"><img src='../images/back.jpg' height='36' width='36'></a> 
       
       <h1>Choisir les déclarations à exporter :</h1>
+      
+      <p>La dernière exportation a eu lieu le <?php echo $dateTimeExport; ?> par <?php echo $auteurExport."."; ?><br/>
+      Il y a <?php echo $nbCount; ?> déclaration(s) exportable(s) dans la base de données.<br/>
+      (*) : Les déclarations cochées ne seront pas exportées.
+      </p>
 
   
-<form name="form3" id="form3" action="" method="post"> 
-
+<form name="form3" id="form3" action="exportCsv.php" method="post"> 
 <?php
 
-	
 	$lesDeclarations = $cnx->query("SELECT * FROM hse_vue_listedeclarations WHERE dejaExporte = 0 ORDER BY datetimesaisie DESC") or die ('Erreur : aucune déclaration trouvée !');
 	$lesDeclarations->setFetchMode(PDO::FETCH_OBJ);
 	$uneDeclaration = $lesDeclarations->fetch();
 	
-
     echo "<table class='tableau'> ";
       	echo "<thead>
               <tr>
@@ -109,7 +131,7 @@ table {
                 <td>Classe</td>
                 <td>Activité</td>
                 <td>Date de la déclaration</td>
-                <td>Exporter</td>
+                <td><font size='2'>Exclure (*)</font></td>
               </tr>
             </thead>";
     echo "<tr></tr>";
@@ -123,7 +145,7 @@ table {
       				echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
       				echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
       				echo "<td> ".toDateTimeFRtableau($uneDeclaration->datetimesaisie)."</td>";
-      				echo "<td>  <input type='checkbox' name='import[]' value=".($uneDeclaration->decID)." checked/></td>";
+      				echo "<td>  <input type='checkbox' name='import[]' value=".($uneDeclaration->decID)." /></td>";
 
 
       				$uneDeclaration = $lesDeclarations->fetch();
