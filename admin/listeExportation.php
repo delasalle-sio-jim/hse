@@ -115,7 +115,7 @@ table {
       </p>
 
   
-<form name="form3" id="form3" action="exportCsv.php" method="post"> 
+<form name="form3" id="form3" action="scriptExportCsv.php" method="post"> 
 <?php
 
 	$lesDeclarations = $cnx->query("SELECT * FROM hse_vue_listedeclarations WHERE dejaExporte = 0 ORDER BY datetimesaisie DESC") or die ('Erreur : aucune déclaration trouvée !');
@@ -145,7 +145,7 @@ table {
       				echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
       				echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
       				echo "<td> ".toDateTimeFRtableau($uneDeclaration->datetimesaisie)."</td>";
-      				echo "<td>  <input type='checkbox' name='import[]' value=".($uneDeclaration->decID)." /></td>";
+      				echo "<td>  <input type='checkbox' name='exclu[]' value=".($uneDeclaration->decID)." /></td>";
 
 
       				$uneDeclaration = $lesDeclarations->fetch();

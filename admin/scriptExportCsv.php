@@ -2,7 +2,7 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 06/11/2017 par Pierre
+// Dernière mise à jour : 10/11/2017 par Pierre
 
 // ouverture d'une session
 session_start();  
@@ -10,8 +10,6 @@ session_start();
 include_once ('../include/_inc_parametres.php');
 // connexion du serveur web à la base MySQL ("include_once" peut être remplacé par "require_once")
 include_once ('../include/_inc_connexion.php');
-// fonctions
-//include ('../include/fonctions.php');
 
 //--------------------------------------------------------------------------
 // Première partie : Exportation au format CSV.
@@ -19,13 +17,39 @@ include_once ('../include/_inc_connexion.php');
 //
 //--------------------------------------------------------------------------
 
-$reponse = $cnx->query('SELECT * FROM hse_vue_listeexportcsv;');
+$tabExclu = array();
+
+foreach($_POST['exclu'] as $idExclu) {
+    $tabExclu[] = $idExclu;
+}
+
+$req = "SELECT * FROM hse_vue_listeexportcsv ";
+$req .= "WHERE decID NOT IN (";
+
+$req2 = "UPDATE hse_declarations SET dejaExporte = 1 WHERE declaration_id NOT IN (";
+
+$countTab = count($tabExclu);
+
+for ($i = 0 ; $i <= $countTab - 1 ; $i++) 
+{
+  
+    if ($i == $countTab - 1) $req .= $tabExclu[$i].");";
+    else $req .= $tabExclu[$i].", ";
+    
+    if ($i == $countTab - 1) $req2 .= $tabExclu[$i].");";
+    else $req2 .= $tabExclu[$i].", ";
+}
+
+//echo $req;
+//echo $req2;
+
+$reponse = $cnx->query($req) or die('erreur');
 $handle = fopen('php://output', 'w');
 //add BOM to fix UTF-8 in Excel
 fputs($handle, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
 
 //On insère les titres
-fputcsv($handle, array('Enveloppe', 'Prénom', 'Nom', 'DuréeBaseDécimale', 'Mois', 'Activité', 'Date de l\'activité', 'Classe', 'Commentaire'), ';');
+fputcsv($handle, array('Enveloppe', 'Prénom', 'Nom', 'DuréeBaseDécimale', 'Mois', 'Activité', 'Date activité', 'Classe', 'Commentaire', 'Id'), ';');
 $reponse->setFetchMode(PDO::FETCH_ASSOC);
 while($donnees = $reponse->fetch()) {
 	$donnees = array_map("utf8_encode", $donnees);
@@ -42,20 +66,11 @@ header('Content-Disposition: attachment;filename='.$nomFichier.'.csv');
 
 //--------------------------------------------------------------------------
 // Deuxième partie : On change le statut (dejaExporte) des déclarations
-// importées précedemment. On met à jour la table hse_parametres également.
+// importées précedemment. On met à jour la table hse_parametres (historique).
 //
 //--------------------------------------------------------------------------
 
-$dejaExporte = 1;
-
-// préparation de la requête update dans la table hse_declarations
-$txt_req = "UPDATE hse_declarations SET dejaExporte = :dejaExporte;";
-$req = $cnx->prepare($txt_req);
-
-// liaison de la requête et de ses paramètres
-$req->bindValue("dejaExporte", $dejaExporte, PDO::PARAM_STR);
-
-// extraction des données et comptage des réponses
+$req = $cnx->prepare($req2);
 $req->execute();
 
 $auteurExport = $_SESSION['login'];
@@ -71,4 +86,5 @@ $req->bindValue("auteur", $auteurExport, PDO::PARAM_STR);
 $req->execute();
 
 ob_flush();
+
 ?>

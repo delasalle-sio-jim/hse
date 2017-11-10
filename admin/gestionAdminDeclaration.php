@@ -60,7 +60,7 @@ if ($_SESSION['type'] != 'administration') { header('Location: ../index.php'); }
         <a href="gestionAdmin.php"><img src='../images/back.jpg' height='36' width='36'></a> 
         <div id="menu-vertical">
         <a href="listeDeclaration.php" class="bouton-menu">Liste des déclarations effectuées</a>
-        <a href="exporterDeclarations.php" class="bouton-menu">Exporter les déclarations au format CSV</a>
+        <a href="listeExportation.php" class="bouton-menu">Exporter les déclarations au format CSV</a>
         <a href="rechercheArchive.php" class="bouton-menu">Rechercher une ancienne déclaration</a>
         </div>
       </div> <!-- fin id="content" -->
