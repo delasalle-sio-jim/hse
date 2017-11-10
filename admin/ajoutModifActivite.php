@@ -78,6 +78,7 @@ table {
           <li class="selected"><a href="gestionAdmin.php">Menu</a></li>
           <!--<li><a href="">Page 1</a></li>-->
           <li class="selected"><a href="../index.php?action=deconnexion">Déconnexion</a></li>
+          <li class="selected"><a>Espace administration</a>
         </ul>
       </div>
 
