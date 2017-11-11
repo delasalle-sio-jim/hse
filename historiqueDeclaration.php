@@ -197,11 +197,11 @@ table {
       if($last_page != 1){
           if($page_num > 1){
               $previous = $page_num - 1;
-              $pagination .= '<a href="historiqueDeclaration2.php?page='.$previous.'">Précédent</a> &nbsp; &nbsp;';
+              $pagination .= '<a href="historiqueDeclaration.php?page='.$previous.'">Précédent</a> &nbsp; &nbsp;';
               
               for($i = $page_num - $nbre_pages_max_gauche_et_droite; $i < $page_num; $i++){
                   if($i > 0){
-                      $pagination .= '<a href="historiqueDeclaration2.php?page='.$i.'">'.$i.'</a> &nbsp;';
+                      $pagination .= '<a href="historiqueDeclaration.php?page='.$i.'">'.$i.'</a> &nbsp;';
                   }
               }
           }
@@ -209,7 +209,7 @@ table {
           $pagination .= '<span class="active">'.$page_num.'</span>&nbsp;';
           
           for($i = $page_num+1; $i <= $last_page; $i++){
-              $pagination .= '<a href="historiqueDeclaration2.php?page='.$i.'">'.$i.'</a> ';
+              $pagination .= '<a href="historiqueDeclaration.php?page='.$i.'">'.$i.'</a> ';
               
               if($i >= $page_num + $nbre_pages_max_gauche_et_droite){
                   break;
@@ -218,7 +218,7 @@ table {
           
           if($page_num != $last_page){
               $next = $page_num + 1;
-              $pagination .= '<a href="historiqueDeclaration2.php?page='.$next.'">Suivant</a> ';
+              $pagination .= '<a href="historiqueDeclaration.php?page='.$next.'">Suivant</a> ';
           }
       }
       
