@@ -262,7 +262,6 @@ $count = $ligne->Nb;
       		echo "<thead>
               <tr>
                 <td>Nom</td>
-                <td>Prénom</td>
                 <td>Date de l'activité</td>
                 <td>Classe</td>
                 <td>Activité</td>
@@ -276,8 +275,7 @@ $count = $ligne->Nb;
 
       			while ($uneDeclaration) {
 
-      				echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)."</td>";
-      				echo "<td> ".utf8_encode($uneDeclaration->ensPrenom)."</td>";
+      			    echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)." ".substr(($uneDeclaration->ensPrenom), 0, 1)."."."</td>";
       				echo "<td> ".toDateFrancais($uneDeclaration->decDate)."</td>";
       				echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
       				echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
@@ -301,7 +299,6 @@ $count = $ligne->Nb;
       		echo "<thead>
               <tr>
                 <td>Nom</td>
-                <td>Prénom</td>
                 <td>Date de l'activité</td>
                 <td>Classe</td>
                 <td>Activité</td>
@@ -315,8 +312,7 @@ $count = $ligne->Nb;
 
       			while ($uneDeclaration) {
 
-      				echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)."</td>";
-      				echo "<td> ".utf8_encode($uneDeclaration->ensPrenom)."</td>";
+      			    echo "<tr><td> ".utf8_encode($uneDeclaration->ensNom)." ".substr(($uneDeclaration->ensPrenom), 0, 1)."."."</td>";
       				echo "<td> ".toDateFrancais($uneDeclaration->decDate)."</td>";
       				echo "<td> ".getClasseSigle($uneDeclaration->classeID)."</td>";
       				echo "<td>".getTypeActiviteLibelle($uneDeclaration->typeActiviteID)."</td>";
