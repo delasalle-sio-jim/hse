@@ -79,7 +79,28 @@ table {
   text-align: center;
 }
 
+input[type="checkbox"] {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+}
   </style>
+
+<script>
+function cocherOuDecocherTout(cochePrincipale) {
+    var coches = document.getElementById('tableau')
+                             .getElementsByTagName('input');
+    for(var i = 0 ; i < coches.length ; i++) {
+        var c = coches[i];
+        if(c.type.toUpperCase() == 'CHECKBOX' & c != cochePrincipale) {
+            c.checked = cochePrincipale.checked;
+        }
+    }
+    return true;
+}
+</script>
 
 </head>
 
@@ -111,10 +132,10 @@ table {
       
       <p>La dernière exportation a eu lieu le <?php echo $dateTimeExport; ?> par <?php echo $auteurExport."."; ?><br/>
       Il y a <?php echo $nbCount; ?> déclaration(s) exportable(s) dans la base de données.<br/>
-      (*) : Les déclarations cochées ne seront pas exportées.
+      (*) : Les déclarations cochées ne seront pas exportées.<br/><br/>
+      <label for="allcheck"> Cocher/décocher toutes les déclarations : </label><input id='checkAll' type='checkbox' name='checkAll' value="" onclick="return cocherOuDecocherTout(this);" />
       </p>
-
-  
+      
 <form name="form3" id="form3" action="scriptExportCsv.php" method="post"> 
 <?php
 
@@ -122,7 +143,7 @@ table {
 	$lesDeclarations->setFetchMode(PDO::FETCH_OBJ);
 	$uneDeclaration = $lesDeclarations->fetch();
 	
-    echo "<table class='tableau'> ";
+    echo "<table class='tableau' id='tableau'> ";
       	echo "<thead>
               <tr>
                 <td>Nom</td>
