@@ -61,6 +61,7 @@ if ($_SESSION['type'] != 'administration') { header('Location: ../index.php'); }
         <div id="menu-vertical">
         <a href="listeDeclaration.php" class="bouton-menu">Liste des déclarations effectuées</a>
         <a href="listeExportation.php" class="bouton-menu">Exporter les déclarations au format CSV</a>
+        <a href="totauxExportation.php" class="bouton-menu">Exporter les totaux au format CSV</a>
         <a href="rechercheArchive.php" class="bouton-menu">Rechercher une ancienne déclaration</a>
         </div>
       </div> <!-- fin id="content" -->
