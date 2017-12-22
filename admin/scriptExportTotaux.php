@@ -12,7 +12,7 @@ include_once ('../include/_inc_parametres.php');
 include_once ('../include/_inc_connexion.php');
 
 //--------------------------------------------------------------------------
-// Première partie : Exportation au format CSV.
+// Exportation des totaux (par prof) au format CSV.
 //
 //
 //--------------------------------------------------------------------------
@@ -47,14 +47,26 @@ while($donnees = $reponse->fetch()) {
 }
 $reponse->closeCursor();
 
+fputcsv($handle, array(' '), ';');
+fputcsv($handle, array('Total par enseignant'), ';');
+fputcsv($handle, array('EnseignantNom', 'EnseignantPrénom', 'Total'), ';');
+
+$req3 = "SELECT * FROM hse_vue_totauxparprof";
+$reponse = $cnx->query($req3) or die('erreur');
+//On insère les titres
+$reponse->setFetchMode(PDO::FETCH_ASSOC);
+while($donnees = $reponse->fetch()) {
+    $donnees = array_map("utf8_encode", $donnees);
+    fputcsv($handle, $donnees, ';');
+}
+$reponse->closeCursor();
+
 fclose($handle);
 
 header('Content-Type: text/csv');
 // Nom fichier
 $nomFichier= 'Exportation_totaux_'.date('j-m-Y');
 header('Content-Disposition: attachment;filename='.$nomFichier.'.csv');
-
-
 
 
 ob_flush();

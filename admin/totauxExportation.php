@@ -61,28 +61,9 @@ table {
   text-align: center;
 }
 
-input[type="checkbox"] {
-    display:inline-block;
-    width:19px;
-    height:19px;
-    margin:-2px 10px 0 0;
-    vertical-align:middle;
-}
   </style>
 
-<script>
-function cocherOuDecocherTout(cochePrincipale) {
-    var coches = document.getElementById('tableau')
-                             .getElementsByTagName('input');
-    for(var i = 0 ; i < coches.length ; i++) {
-        var c = coches[i];
-        if(c.type.toUpperCase() == 'CHECKBOX' & c != cochePrincipale) {
-            c.checked = cochePrincipale.checked;
-        }
-    }
-    return true;
-}
-</script>
+
 
 </head>
 
@@ -112,7 +93,7 @@ function cocherOuDecocherTout(cochePrincipale) {
       
       <h1>Exportation des totaux :</h1>
       
-	
+	  <p>Cet outil d'exportation permet de récupérer une liste (au format CSV) contenant le nombre de total d'heures pour chaque enseignant.</p>
       
     <form name="form3" id="form3" action="scriptExportTotaux.php" method="post"> 
     
