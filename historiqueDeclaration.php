@@ -137,7 +137,11 @@ table {
 
       <h3>Historique des déclarations réalisées : </h3>
 
-
+	  <p><a href="ajoutDeclarationKholle.php">Déclarer des heures d'interrogations orales (khôlles)</a>
+	  <br/><a href="ajoutDeclarationHSE.php">Déclarer des heures supplémentaires (HSE)</a>
+	  </p>
+	  
+	  
       <?php 
 
       // Récupération de l'année scolaire à partir de la table HSE_PARAMETRES
