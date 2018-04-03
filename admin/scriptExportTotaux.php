@@ -2,7 +2,7 @@
 <?php
 // Application HSE
 // Auteur : DELAUNAY Pierre
-// Dernière mise à jour : 19/12/2017 par Pierre
+// Dernière mise à jour : 07/01/2017 par Pierre
 
 // ouverture d'une session
 session_start();  
@@ -17,7 +17,7 @@ include_once ('../include/_inc_connexion.php');
 //
 //--------------------------------------------------------------------------
 
-$req = "SELECT * FROM hse_vue_totauxpect1";
+$req = "SELECT * FROM hse_vue_totauxparprof";
 
 $reponse = $cnx->query($req) or die('erreur');
 $handle = fopen('php://output', 'w');
@@ -25,39 +25,12 @@ $handle = fopen('php://output', 'w');
 fputs($handle, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
 
 //On insère les titres
-fputcsv($handle, array('PECT1'), ';');
-fputcsv($handle, array('EnseignantNom', 'EnseignantPrénom', 'Total'), ';');
+
+fputcsv($handle, array('EnseignantNom', 'EnseignantPrénom', 'PECT1', 'PECT2', 'HSE', 'Total'), ';');
 $reponse->setFetchMode(PDO::FETCH_ASSOC);
 while($donnees = $reponse->fetch()) {
 	$donnees = array_map("utf8_encode", $donnees);
 	fputcsv($handle, $donnees, ';');
-}
-$reponse->closeCursor();
-fputcsv($handle, array(' '), ';');
-fputcsv($handle, array('PECT2'), ';');
-fputcsv($handle, array('EnseignantNom', 'EnseignantPrénom', 'Total'), ';');
-
-$req2 = "SELECT * FROM hse_vue_totauxpect2";
-$reponse = $cnx->query($req2) or die('erreur');
-//On insère les titres
-$reponse->setFetchMode(PDO::FETCH_ASSOC);
-while($donnees = $reponse->fetch()) {
-    $donnees = array_map("utf8_encode", $donnees);
-    fputcsv($handle, $donnees, ';');
-}
-$reponse->closeCursor();
-
-fputcsv($handle, array(' '), ';');
-fputcsv($handle, array('Total par enseignant'), ';');
-fputcsv($handle, array('EnseignantNom', 'EnseignantPrénom', 'Total'), ';');
-
-$req3 = "SELECT * FROM hse_vue_totauxparprof";
-$reponse = $cnx->query($req3) or die('erreur');
-//On insère les titres
-$reponse->setFetchMode(PDO::FETCH_ASSOC);
-while($donnees = $reponse->fetch()) {
-    $donnees = array_map("utf8_encode", $donnees);
-    fputcsv($handle, $donnees, ';');
 }
 $reponse->closeCursor();
 

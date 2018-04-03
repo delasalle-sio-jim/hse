@@ -19,27 +19,37 @@ include_once ('../include/_inc_connexion.php');
 
 $tabExclu = array();
 
-foreach($_POST['exclu'] as $idExclu) {
-    $tabExclu[] = $idExclu;
-}
-
-$req = "SELECT * FROM hse_vue_listeexportcsv ";
-$req .= "WHERE decID NOT IN (";
-
-$req2 = "UPDATE hse_declarations SET dejaExporte = 1 WHERE declaration_id NOT IN (";
-
-$countTab = count($tabExclu);
-
-for ($i = 0 ; $i <= $countTab - 1 ; $i++) 
+if (isset($_POST['exclu']))
 {
-  
-    if ($i == $countTab - 1) $req .= $tabExclu[$i].");";
-    else $req .= $tabExclu[$i].", ";
-    
-    if ($i == $countTab - 1) $req2 .= $tabExclu[$i].");";
-    else $req2 .= $tabExclu[$i].", ";
-}
+	foreach($_POST['exclu'] as $idExclu) {
+	    $tabExclu[] = $idExclu;
+	}
 
+	$req = "SELECT * FROM hse_vue_listeexportcsv ";
+	$req .= "WHERE decID NOT IN (";
+
+	$req2 = "UPDATE hse_declarations SET dejaExporte = 1 WHERE declaration_id NOT IN (";
+
+	$countTab = count($tabExclu);
+
+	for ($i = 0 ; $i <= $countTab - 1 ; $i++) 
+	{
+	  
+	    if ($i == $countTab - 1) $req .= $tabExclu[$i].");";
+	    else $req .= $tabExclu[$i].", ";
+	    
+	    if ($i == $countTab - 1) $req2 .= $tabExclu[$i].");";
+	    else $req2 .= $tabExclu[$i].", ";
+	}
+
+}
+else
+{
+
+	$req = "SELECT * FROM hse_vue_listeexportcsv";
+	$req2 = "UPDATE hse_declarations SET dejaExporte = 1";
+
+}
 //echo $req;
 //echo $req2;
 
@@ -75,7 +85,7 @@ $req->execute();
 
 $auteurExport = $_SESSION['login'];
 $dateTimeExport = date("Y-m-d H:i:s");
-// préparation de la requête update dans la table hse_declarations
+// préparation de la requête update dans la table hse_parametres
 $txt_req = "UPDATE hse_parametres SET dateTimeExport = :dt, auteurExport = :auteur;";
 $req = $cnx->prepare($txt_req);
 
