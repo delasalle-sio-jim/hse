@@ -30,6 +30,8 @@ if (isset($_POST['exclu']))
 
 	$req2 = "UPDATE hse_declarations SET dejaExporte = 1 WHERE declaration_id NOT IN (";
 
+	$req3 = "ALTER VIEW hse_vue_exporttotaux2 AS SELECT * FROM hse_vue_exporttotaux WHERE decID NOT IN (";
+
 	$countTab = count($tabExclu);
 
 	for ($i = 0 ; $i <= $countTab - 1 ; $i++) 
@@ -40,6 +42,12 @@ if (isset($_POST['exclu']))
 	    
 	    if ($i == $countTab - 1) $req2 .= $tabExclu[$i].");";
 	    else $req2 .= $tabExclu[$i].", ";
+	    
+	    if ($i == $countTab - 1) $req .= $tabExclu[$i].");";
+	    else $req .= $tabExclu[$i].", ";
+	    
+	    if ($i == $countTab - 1) $req3 .= $tabExclu[$i].");";
+	    else $req3 .= $tabExclu[$i].", ";
 	}
 
 }
@@ -48,12 +56,16 @@ else
 
 	$req = "SELECT * FROM hse_vue_listeexportcsv";
 	$req2 = "UPDATE hse_declarations SET dejaExporte = 1";
+	$req3 = "ALTER VIEW hse_vue_exporttotaux2 AS SELECT * FROM hse_vue_exporttotaux";
 
 }
 //echo $req;
 //echo $req2;
+//echo $req3;
 
-$reponse = $cnx->query($req) or die('erreur');
+$alterView = $cnx->query($req3) or die('erreur requete alter view');
+
+$reponse = $cnx->query($req) or die('erreur req');
 $handle = fopen('php://output', 'w');
 //add BOM to fix UTF-8 in Excel
 fputs($handle, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
@@ -66,6 +78,20 @@ while($donnees = $reponse->fetch()) {
 	fputcsv($handle, $donnees, ';');
 }
 $reponse->closeCursor();
+
+
+fputcsv($handle, array(''), ';');
+fputcsv($handle, array('EnseignantNom', 'EnseignantPrénom', 'PECT1', 'PECT2', 'HSE', 'Total'), ';');
+
+$reponse = $cnx->query("SELECT * FROM hse_vue_totauxparprof") or die('erreur');
+$reponse->setFetchMode(PDO::FETCH_ASSOC);
+while($donnees = $reponse->fetch()) {
+    $donnees = array_map("utf8_encode", $donnees);
+    fputcsv($handle, $donnees, ';');
+}
+$reponse->closeCursor();
+
+
 fclose($handle);
 
 header('Content-Type: text/csv');
@@ -85,7 +111,7 @@ $req->execute();
 
 $auteurExport = $_SESSION['login'];
 $dateTimeExport = date("Y-m-d H:i:s");
-// préparation de la requête update dans la table hse_declarations
+// préparation de la requête update dans la table hse_parametres
 $txt_req = "UPDATE hse_parametres SET dateTimeExport = :dt, auteurExport = :auteur;";
 $req = $cnx->prepare($txt_req);
 
