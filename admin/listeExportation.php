@@ -139,7 +139,7 @@ function cocherOuDecocherTout(cochePrincipale) {
 <form name="form3" id="form3" action="scriptExportCsv.php" method="post"> 
 <?php
 
-	$lesDeclarations = $cnx->query("SELECT * FROM hse_vue_listedeclarations WHERE dejaExporte = 0 ORDER BY datetimesaisie DESC") or die ('Erreur : aucune déclaration trouvée !');
+	$lesDeclarations = $cnx->query("SELECT * FROM hse_vue_listedeclarations WHERE dejaExporte = 0 ORDER BY decDate DESC") or die ('Erreur : aucune déclaration trouvée !');
 	$lesDeclarations->setFetchMode(PDO::FETCH_OBJ);
 	$uneDeclaration = $lesDeclarations->fetch();
 	

@@ -54,7 +54,7 @@ if (isset($_POST['exclu']))
 else
 {
 
-	$req = "SELECT * FROM hse_vue_listeexportcsv";
+	$req = "SELECT * FROM hse_vue_listeexportcsv ORDER BY Date DESC";
 	$req2 = "UPDATE hse_declarations SET dejaExporte = 1";
 	$req3 = "ALTER VIEW hse_vue_exporttotaux2 AS SELECT * FROM hse_vue_exporttotaux";
 
