@@ -239,7 +239,7 @@ foreach($choix as $c)
     }
 }
 
-$requete = $sql.$conditions;
+$requete = $sql.$conditions." ORDER BY decDate DESC";
 $reqcount = "SELECT COUNT(*) As Nb FROM hse_vue_listedeclarations".$conditions;
 
 
